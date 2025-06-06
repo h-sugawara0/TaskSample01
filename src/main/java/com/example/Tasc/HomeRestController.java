@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,10 +20,10 @@ public class HomeRestController {
 
     private List<TaskItem> taskItems = new ArrayList<>();
 
-    @RequestMapping(value = "/resthello")
+    @RequestMapping(value = "/resthello") // 表示テスト用
     String hello() {
         return "Hello.It works!現在時刻は" + LocalDateTime.now() + "です。";
-    }
+    }// 表示テスト用
 
     @GetMapping("/restadd")
     String addItem(@RequestParam("task") String task, // http://localhost:8080/restadd?task=宿題&deadline=2025-06-10の
@@ -40,9 +41,4 @@ public class HomeRestController {
                 .collect(Collectors.joining(","));
         return result;
     }
-
-    public String getMethodName(@RequestParam String param) {
-        return new String();
-    }
-
 }
